@@ -170,7 +170,7 @@ def lambda_handler(event, context):
                 'capacityProvider': capacityProvider,
             },
         ],
-        cluster=cluster',
+        cluster=cluster,
         overrides={
             'containerOverrides': [
                 {
