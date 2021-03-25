@@ -5,7 +5,7 @@ import boto3
 
 
 def process(input):
-    time.sleep(30)
+    time.sleep(15)
     return "blah"
 
 
