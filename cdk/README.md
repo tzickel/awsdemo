@@ -1,6 +1,6 @@
 # What is this ?
 
-A simple toy PoC application, which looks for new files in a given Amazon S3 bucket, allocates Amazon EC2 compute resource for processing them via a Docker container, and write the results to another Amazon S3 bucket.
+This CDK app defines the infrastructure for the demo in a declerative and atomic way. It defines the cluster with compute resources, builds and uploads the code as an container image, the input and output buckets, and all the connections between them.
 
 # Prerequisites
 
@@ -8,7 +8,7 @@ If you are running this script from the docker image provided above, you already
 
 * Python 3.6 (or above)
 * AWS CLI
-* AWS CDK 1.95.0
+* AWS CDK 1.95.0 (if you plan on using another version, change both the requirements.txt file and the Dockerfile in the directory above)
 * Linux Docker (on Ubuntu 18.04+ it's sufficient to do `sudo apt install docker.io` if you don't have docker installed already)
 
 # TODO
@@ -41,6 +41,14 @@ cdk bootstrap
 ```bash
 cdk deploy
 ```
+
+# Modifing resources
+
+Inside the [app.py](app.py) file, at the start of the CdkDemoStack class definition, you can modify some settings such as compute resources:  
+
+asg_paramters are: https://docs.aws.amazon.com/cdk/api/latest/python/aws_cdk.aws_ecs/Cluster.html#aws_cdk.aws_ecs.Cluster.add_capacity  
+
+container_settings are: https://docs.aws.amazon.com/cdk/api/latest/python/aws_cdk.aws_ecs/Ec2TaskDefinition.html#aws_cdk.aws_ecs.Ec2TaskDefinition.add_container  
 
 # Check it works
 

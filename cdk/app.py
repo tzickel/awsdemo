@@ -66,6 +66,7 @@ class CdkDemoStack(cdk.Stack):
 
         # TODO should this stuff be passed as inputs to the stack ?
         source_code_directory = "/opt/python"
+        # https://docs.aws.amazon.com/cdk/api/latest/python/aws_cdk.aws_ecs/Cluster.html#aws_cdk.aws_ecs.Cluster.add_capacity
         asg_parameters = {
             "instance_type": ec2.InstanceType.of(
                 ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO
@@ -75,6 +76,7 @@ class CdkDemoStack(cdk.Stack):
             "max_capacity": 5,
             "min_capacity": 0,
         }
+        # https://docs.aws.amazon.com/cdk/api/latest/python/aws_cdk.aws_ecs/Ec2TaskDefinition.html#aws_cdk.aws_ecs.Ec2TaskDefinition.add_container
         container_settings = {
             "memory_limit_mib": 300,
             "logging": ecs.AwsLogDriver(stream_prefix="ecslogs"),
